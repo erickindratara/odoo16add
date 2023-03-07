@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+       <record id="ksp_config_tabungan_form_view" model="ir.ui.view">
+           <field name="name">ksp.config.tabungan.form.view</field>
+           <field name="model">ksp.config.tabungan</field>
+           <field name="arch" type="xml">
+               <form string="Konfigurasi Tabungan">
+                   <sheet>
+                       <separator string="Fee per month"/>
+                       <field name="fee_per_month_ids" nolabel="1">
+                           <tree editable="bottom">
+                               <field name="sequence" widget="handle"/>
+                                <field name="minimum_amount"/>
+                                <field name="admin_fee_amount"/>
+                            </tree>
+                       </field>
+                       <separator string="Fee per withdrawal"/>
+                       <field name="fee_per_withdrawal_ids" nolabel="1">
+                           <tree editable="bottom">
+                               <field name="sequence" widget="handle"/>
+                                <field name="minimum_amount"/>
+                                <field name="admin_fee_amount"/>
+                            </tree>
+                       </field>
+                   </sheet>
+               </form>
+           </field>
+       </record>
+        <record id="ksp_config_tabungan_action_view" model="ir.actions.act_window">
+            <field name="name">Konfigurasi Tabungan</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">ksp.config.tabungan</field>
+            <field name="view_mode">form</field>
+            <field name="res_id" ref="default_config_tabungan"/>
+        </record>
+        <menuitem id="ksp_config_tabungan_menu" name="Konfigurasi Tabungan" parent="ksp_tabungan_configuration" action="ksp_config_tabungan_action_view" sequence="100"/>
+    </data>
+</odoo>

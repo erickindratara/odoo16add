@@ -1,0 +1,7 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_ksp_keuntungan,access_ksp_keuntungan,model_ksp_keuntungan,,1,1,1,1
+access_ksp_dividen_saham,access_ksp_dividen_saham,model_ksp_dividen_saham,,1,1,1,1
+access_ksp_saham,access_ksp_saham,model_ksp_saham,,1,1,1,0
+access_ksp_saham_value,access_ksp_saham_value,model_ksp_saham_value,,1,1,1,0
+access_ksp_wizard_generate_saham,access_ksp_wizard_generate_saham,model_ksp_wizard_generate_saham,,1,1,1,1
+access_ksp_buy_saham,access_ksp_buy_saham,model_ksp_buy_saham,,1,1,1,0

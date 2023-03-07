@@ -1,0 +1,8 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_ksp_simpanan,access_ksp_simpanan,model_ksp_simpanan,,1,1,1,1
+access_ksp_simpanan_line,access_ksp_simpanan_line,model_ksp_simpanan_line,,1,1,1,1
+access_wizard_penarikan_simpanan,access_wizard_penarikan_simpanan,model_wizard_penarikan_simpanan,,1,1,1,1
+access_wizard_setoran_simpanan,access_wizard_setoran_simpanan,model_wizard_setoran_simpanan,,1,1,1,1
+access_ksp_config_simpanan_fee_per_month,access_ksp_config_simpanan_fee_per_month,model_ksp_config_simpanan_fee_per_month,,1,1,1,1
+access_ksp_config_simpanan_fee_per_withdrawal,access_ksp_config_simpanan_fee_per_withdrawal,model_ksp_config_simpanan_fee_per_withdrawal,,1,1,1,1
+access_ksp_config_simpanan,access_ksp_config_simpanan,model_ksp_config_simpanan,,1,1,1,1

@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+       <record id="ksp_keuntungan_form_view" model="ir.ui.view">
+           <field name="name">ksp.keuntungan.form.view</field>
+           <field name="model">ksp.keuntungan</field>
+           <field name="arch" type="xml">
+               <form string="Keuntungan">
+                   <header>
+                       <button name="set_confirm" string="Set Confirm" class="oe_highlight" states="draft" type="object"/>
+                       <button name="set_cancel" string="Cancel" class="oe_highlight" states="confirm" type="object"/>
+                       <button name="set_done" string="Set Done" class="oe_highlight" states="confirm" type="object"/>
+                       <field name="state" widget="statusbar" statusbar_visible="draft,confirm,done"/>
+                   </header>
+                   <sheet>
+                       <div class="oe_title">
+                           <div class="oe_edit_only">
+                               <label for="name"/>
+                           </div>
+                           <h1>
+                               <field name="name"/>
+                           </h1>
+                       </div>
+                       <group>
+                           <field name="tahun"/>
+                           <field name="amount"/>
+                           <field name="persen_bagi_hasil"/>
+                           <field name="dana_dpk"/>
+                       </group>
+                       <notebook>
+                           <page string="Dividen Saham">
+                               <field name="dividen_saham_ids">
+                                   <tree>
+                                       <field name="tabungan_id"/>
+                                       <field name="partner_tabungan_id"/>
+                                       <field name="umur_saham"/>
+                                       <field name="saham_value"/>
+                                       <field name="amount_dividen"/>
+                                   </tree>
+                               </field>
+                           </page>
+                       </notebook>
+                   </sheet>
+               </form>
+           </field>
+       </record>
+        <record id="ksp_keuntungan_tree_view" model="ir.ui.view">
+            <field name="name">ksp.keuntungan.tree.view</field>
+            <field name="model">ksp.keuntungan</field>
+            <field name="arch" type="xml">
+                <tree string="Keuntungan">
+                    <field name="name"/>
+                    <field name="tahun"/>
+                   <field name="amount"/>
+                    <field name="state"/>
+                </tree>
+            </field>
+        </record>
+        <record id="ksp_keuntungan_action_view" model="ir.actions.act_window">
+            <field name="name">Keuntungan</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">ksp.keuntungan</field>
+            <field name="view_mode">tree,form</field>
+            <field name="help" type="html">
+              <p class="oe_view_nocontent_create">
+                Tidak ada keuntungan
+              </p><p>
+                Klik create untuk membuat keuntungan
+              </p>
+            </field>
+        </record>
+        <menuitem id="ksp_perusahaan_root" name="Perusahaan" sequence="30"/>
+        <menuitem id="ksp_perusahaan_keuntungan_menu" name="Keuntungan" parent="ksp_perusahaan_root"
+                  action="ksp_keuntungan_action_view" sequence="10"/>
+    </data>
+</odoo>

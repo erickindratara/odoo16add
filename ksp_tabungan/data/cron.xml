@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record id="apply_fee_monthly" model="ir.cron">
+            <field name="name">Tabungan: Apply fee monthly</field>
+            <field name="model_id" ref="model_ksp_tabungan"/>
+            <field name="state">code</field>
+            <field name="code">model.apply_fee_monthly()</field>
+            <field name='interval_number'>1</field>
+            <field name='interval_type'>months</field>
+            <field name="numbercall">-1</field>
+        </record>
+    </data>
+</odoo>

@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+       <record id="ksp_config_simpanan_form_view" model="ir.ui.view">
+           <field name="name">ksp.config.simpanan.form.view</field>
+           <field name="model">ksp.config.simpanan</field>
+           <field name="arch" type="xml">
+               <form string="Konfigurasi Simpanan">
+                   <sheet>
+                       <separator string="Fee per month"/>
+                       <field name="fee_per_month_ids" nolabel="1">
+                           <tree editable="bottom">
+                               <field name="sequence" widget="handle"/>
+                                <field name="minimum_amount"/>
+                                <field name="admin_fee_amount"/>
+                            </tree>
+                       </field>
+                       <separator string="Fee per withdrawal"/>
+                       <field name="fee_per_withdrawal_ids" nolabel="1">
+                           <tree editable="bottom">
+                               <field name="sequence" widget="handle"/>
+                                <field name="minimum_amount"/>
+                                <field name="admin_fee_amount"/>
+                            </tree>
+                       </field>
+                   </sheet>
+               </form>
+           </field>
+       </record>
+        <record id="ksp_config_simpanan_action_view" model="ir.actions.act_window">
+            <field name="name">Konfigurasi Simpanan</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">ksp.config.simpanan</field>
+            <field name="view_mode">form</field>
+            <field name="res_id" ref="default_config_simpanan"/>
+        </record>
+        <menuitem id="ksp_simpanan_configuration" name="Konfigurasi" parent="simpanan_root" sequence="1000"/>
+        <menuitem id="ksp_config_simpanan_menu" name="Konfigurasi Simpanan" parent="ksp_simpanan_configuration" action="ksp_config_simpanan_action_view" sequence="100"/>
+    </data>
+</odoo>

@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+       <record id="ksp_tabungan_line_type_form_view" model="ir.ui.view">
+           <field name="name">ksp.tabungan.line.type.form.view</field>
+           <field name="model">ksp.tabungan.line.type</field>
+           <field name="arch" type="xml">
+               <form string="Type Transaksi Tabungan">
+                   <sheet>
+                       <group>
+                           <field name="name"/>
+                           <field name="code"/>
+                       </group>
+                   </sheet>
+               </form>
+           </field>
+       </record>
+        <record id="ksp_tabungan_line_type_tree_view" model="ir.ui.view">
+            <field name="name">ksp.tabungan.line.type.tree.view</field>
+            <field name="model">ksp.tabungan.line.type</field>
+            <field name="arch" type="xml">
+                <tree string="Type Transaksi Tabungan" create="false">
+                    <field name="name"/>
+                    <field name="code"/>
+                </tree>
+            </field>
+        </record>
+        <record id="ksp_tabungan_line_type_action_view" model="ir.actions.act_window">
+            <field name="name">Type Transaksi Tabungan</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">ksp.tabungan.line.type</field>
+            <field name="view_mode">tree</field>
+            <field name="help" type="html">
+              <p class="oe_view_nocontent_create">
+                Tidak ada tipe
+              </p><p>
+                Tipe transaksi harus sesuai dengan kebutuhan sistem
+              </p>
+            </field>
+        </record>
+        <menuitem id="ksp_tabungan_configuration" name="Konfigurasi" parent="tabungan_root" sequence="1000"/>
+        <menuitem id="ksp_tabungan_line_type_menu" name="Type Transaksi Tabungan" parent="ksp_tabungan_configuration" action="ksp_tabungan_line_type_action_view" sequence="10"/>
+    </data>
+</odoo>

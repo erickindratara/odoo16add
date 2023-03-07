@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record id="seq_keuntungan" model="ir.sequence">
+            <field name="name">Sequence Keuntungan</field>
+            <field name="code">seq.keuntungan</field>
+            <field name="prefix">PRF/%(year)s/%(month)s/</field>
+            <field name="padding">8</field>
+            <field name="company_id" eval="False"/>
+        </record>
+        <record id="seq_dividen_simpanan" model="ir.sequence">
+            <field name="name">Sequence Dividen Simpanan</field>
+            <field name="code">seq.dividen.simpanan</field>
+            <field name="prefix">DIV/SPN/%(year)s/%(month)s/</field>
+            <field name="padding">8</field>
+            <field name="company_id" eval="False"/>
+        </record>
+        <record id="seq_dividen_tabungan" model="ir.sequence">
+            <field name="name">Sequence Dividen Tabungan</field>
+            <field name="code">seq.dividen.tabungan</field>
+            <field name="prefix">DIV/TBN/%(year)s/%(month)s/</field>
+            <field name="padding">8</field>
+            <field name="company_id" eval="False"/>
+        </record>
+        <record id="seq_saham" model="ir.sequence">
+            <field name="name">Sequence Saham</field>
+            <field name="code">seq.saham</field>
+            <field name="prefix">SHM/%(year)s/%(month)s/</field>
+            <field name="padding">8</field>
+            <field name="company_id" eval="False"/>
+        </record>
+        <record id="seq_saham_buy" model="ir.sequence">
+            <field name="name">Sequence Saham buy</field>
+            <field name="code">seq.saham.buy</field>
+            <field name="prefix">BUY/%(year)s/%(month)s/</field>
+            <field name="padding">8</field>
+            <field name="company_id" eval="False"/>
+        </record>
+    </data>
+</odoo>

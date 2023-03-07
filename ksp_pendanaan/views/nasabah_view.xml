@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+       <record id="custom_pendanaan_nasabah_form_view" model="ir.ui.view">
+            <field name="name">custom.tabungan.nasabah.form.view</field>
+            <field name="model">res.partner</field>
+            <field name="inherit_id" ref="base.view_partner_form"/>
+           <field name="arch" type="xml">
+               <xpath expr="//notebook" position="inside">
+                    <page string="Pendanaan">
+                        <field name="pendanaan_ids">
+                            <tree>
+                               <field name="name"/>
+                                <field name="amount"/>
+                                <field name="state"/>
+                            </tree>
+                        </field>
+                    </page>
+                   <page string="Cicilan">
+                        <field name="cicilan_ids">
+                            <tree>
+                               <field name="cicilan_index"/>
+                               <field name="due_date"/>
+                               <field name="amount"/>
+                            </tree>
+                        </field>
+                    </page>
+                </xpath>
+           </field>
+       </record>
+        <menuitem id="nasabah_menu" name="Nasabah" parent="pendanaan_root_menu" action="ksp_tabungan.nasabah_action_view" sequence="40"/>
+    </data>
+</odoo>

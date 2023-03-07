@@ -1,0 +1,7 @@
+id,name,code
+type-1,Setoran,STRN
+type-2,Penarikan,TRKN
+type-3,Biaya admin penarikan,ADM1
+type-4,Biaya admin bulanan,ADM2
+type-5,Dividen Tabungan,DIVT
+type-6,Dividen Simpanan,DIVS

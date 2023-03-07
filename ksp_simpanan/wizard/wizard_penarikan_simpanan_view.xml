@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+       <record id="wizard_penarikan_simpanan_form_view" model="ir.ui.view">
+           <field name="name">wizard.penarikan.simpanan.form.view</field>
+           <field name="model">wizard.penarikan.simpanan</field>
+           <field name="arch" type="xml">
+               <form string="Penarikan">
+                   <sheet>
+                       <group>
+                           <field name="partner_id"/>
+                           <field name="simpanan_id"/>
+                           <field name="amount"/>
+                       </group>
+                   </sheet>
+                   <footer>
+                        <button name="execute_penarikan" string="Konfirmasi" type="object"/>
+                        <button string="Batal" class="btn-secondary" special="cancel"/>
+                    </footer>
+               </form>
+           </field>
+       </record>
+        <record id="wizard_penarikan_simpanan_action_view" model="ir.actions.act_window">
+            <field name="name">Penarikan Simpanan</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">wizard.penarikan.simpanan</field>
+            <field name="view_mode">form</field>
+            <field name="target">new</field>
+        </record>
+        <menuitem id="penarikan_simpanan_menu" name="Penarikan" parent="simpanan_categ" action="wizard_penarikan_simpanan_action_view" sequence="30"/>
+    </data>
+</odoo>

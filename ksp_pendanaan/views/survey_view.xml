@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+       <record id="pendanaan_survey_form_view" model="ir.ui.view">
+           <field name="name">pendanaan.survey.form.view</field>
+           <field name="model">ksp.pendanaan</field>
+           <field name="arch" type="xml">
+               <form string="Survey" create="false" duplicate="false">
+                   <header>
+                       <button name="action_survey_approve" string="Approve" class="oe_highlight" type="object" attrs="{'invisible':[('survey_state','!=','open')]}"/>
+                       <button name="action_survey_reject" string="Reject" class="oe_highlight" type="object" attrs="{'invisible':[('survey_state','!=','open')]}"/>
+                       <field name="survey_state" widget="statusbar" statusbar_visible="open,approved"/>
+                       <field name="state" invisible="1"/>
+                   </header>
+                   <sheet>
+                       <div class="oe_title">
+                           <div class="oe_edit_only">
+                               <label for="name"/>
+                           </div>
+                           <h1>
+                               <field name="name"/>
+                           </h1>
+                       </div>
+                       <group>
+                           <group>
+                               <field name="partner_id"/>
+                               <field name="amount"/>
+                           </group>
+                           <group>
+                               <field name="tenor"/>
+                               <field name="cicilan_amount"/>
+                               <field name="bunga"/>
+                           </group>
+                       </group>
+                       <notebook>
+                           <page string="Survey">
+                               <group>
+                                   <group>
+                                       <field name="image_nasabah" widget="image"/>
+                                       <field name="image_ktp" widget="image"/>
+                                       <field name="image_ktp_nasabah" widget="image"/>
+                                       <field name="image_domisili" widget="image"/>
+                                       <field name="image_usaha_ids" widget="many2many_binary"/>
+                                   </group>
+                               </group>
+                           </page>
+                       </notebook>
+                   </sheet>
+               </form>
+           </field>
+       </record>
+        <record id="pendanaan_survey_tree_view" model="ir.ui.view">
+            <field name="name">pendanaan.survey.tree.view</field>
+            <field name="model">ksp.pendanaan</field>
+            <field name="arch" type="xml">
+                <tree string="Survey" create="false" duplicate="false">
+                    <field name="name"/>
+                    <field name="partner_id"/>
+                    <field name="amount"/>
+                    <field name="survey_state"/>
+                </tree>
+            </field>
+        </record>
+        <record id="pendanaan_survey_action_view" model="ir.actions.act_window">
+            <field name="name">Survey</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">ksp.pendanaan</field>
+            <field name="view_mode">tree,form</field>
+            <field name="domain">[('survey_state','=','open')]</field>
+            <field name="view_ids" eval="[(5, 0, 0),
+                (0, 0, {'view_mode': 'tree', 'view_id': ref('pendanaan_survey_tree_view')}),
+                (0, 0, {'view_mode': 'form', 'view_id': ref('pendanaan_survey_form_view')})]"/>
+            <field name="help" type="html">
+              <p class="oe_view_nocontent_create">
+                Tidak ada survey
+              </p><p>
+                Survey perlu dilakukan jika pendanaan diconfirm
+              </p>
+            </field>
+        </record>
+        <menuitem id="survey_menu" name="Survey" parent="pendanaan_root_menu" action="pendanaan_survey_action_view" sequence="20"/>
+    </data>
+</odoo>

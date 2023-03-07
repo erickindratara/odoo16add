@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+       <record id="seq_pendanaan" model="ir.sequence">
+            <field name="name">Sequence Pendanaan</field>
+            <field name="code">seq.pendanaan</field>
+            <field name="prefix">DANA/%(year)s/%(month)s/</field>
+            <field name="padding">8</field>
+            <field name="company_id" eval="False"/>
+        </record>
+        <record id="seq_cicilan" model="ir.sequence">
+            <field name="name">Sequence Cicilan</field>
+            <field name="code">seq.cicilan</field>
+            <field name="prefix">CCL/%(year)s/%(month)s/</field>
+            <field name="padding">8</field>
+            <field name="company_id" eval="False"/>
+        </record>
+    </data>
+</odoo>

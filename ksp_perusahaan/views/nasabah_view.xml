@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+       <record id="custom_saham_nasabah_form_view" model="ir.ui.view">
+            <field name="name">custom.saham.nasabah.form.view</field>
+            <field name="model">res.partner</field>
+            <field name="inherit_id" ref="base.view_partner_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//notebook" position="inside">
+                    <page string="Saham">
+                        <group>
+                            <group>
+                                <field name="saham_count"/>
+                                <field name="saham_current_value"/>
+                            </group>
+                        </group>
+                    </page>
+                </xpath>
+            </field>
+       </record>
+        <menuitem id="nasabah_menu" name="Nasabah" parent="ksp_perusahaan_root" action="ksp_tabungan.nasabah_action_view" sequence="30"/>
+    </data>
+</odoo>

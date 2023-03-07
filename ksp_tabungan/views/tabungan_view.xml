@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record id="ksp_tabungan_form_view" model="ir.ui.view">
+            <field name="name">ksp.tabungan.form.view</field>
+            <field name="model">ksp.tabungan</field>
+            <field name="arch" type="xml">
+               <form string="Rekening">
+                   <header>
+                       <button name="apply_fee_monthly" string="Terapkan Biaya Bulanan" class="oe_highlight" type="object"/>
+                   </header>
+                   <sheet>
+                       <div class="oe_title">
+                            <h1><field name="partner_id"/></h1>
+                        </div>
+                       <group>
+                           <field name="name"/>
+                           <field name="saldo"/>
+                       </group>
+                       <notebook>
+                           <page string="Tabungan Detail">
+                               <field name="line_ids" string="Transaction Line" mode="tree" readonly="1">
+                                    <tree>
+                                        <field name="tabungan_id" invisible="1"/>
+                                        <field name="name" invisible="1"/>
+                                        <field name="transaction_date"/>
+                                        <field name="type_id"/>
+                                        <field name="amount_in"/>
+                                        <field name="amount_out"/>
+                                    </tree>
+                                </field>
+                           </page>
+                       </notebook>
+                   </sheet>
+               </form>
+            </field>
+        </record>
+        <record id="ksp_tabungan_tree_view" model="ir.ui.view">
+            <field name="name">ksp.tabungan.tree.view</field>
+            <field name="model">ksp.tabungan</field>
+            <field name="arch" type="xml">
+                <tree string="Rekening">
+                    <field name="name"/>
+                    <field name="partner_id"/>
+                    <field name="saldo"/>
+                </tree>
+            </field>
+        </record>
+        <record id="ksp_tabungan_action_view" model="ir.actions.act_window">
+            <field name="name">Tabungan</field>
+            <field name="res_model">ksp.tabungan</field>
+            <field name="view_mode">tree,form</field>
+            <field name="help" type="html">
+              <p class="oe_view_nocontent_create">
+                Tidak ada tabungan
+              </p><p>
+                Klik create untuk membuat tabungan pertama
+              </p>
+            </field>
+        </record>
+        <menuitem id="tabungan_root" name="Tabungan" sequence="10"/>
+        <menuitem id="akun_tabungan_categ" name="Tabungan" parent="tabungan_root" sequence="10"/>
+        <menuitem id="tabungan_menu" name="Rekening" sequence="10" parent="akun_tabungan_categ" action="ksp_tabungan_action_view"/>
+    </data>
+</odoo>

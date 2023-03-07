@@ -1,0 +1,9 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_ksp_tabungan,access_ksp_tabungan,model_ksp_tabungan,,1,1,1,0
+access_ksp_tabungan_line,access_ksp_tabungan_line,model_ksp_tabungan_line,,1,1,1,0
+access_wizard_setoran_tabungan,access_wizard_setoran_tabungan,model_wizard_setoran_tabungan,,1,1,1,0
+access_wizard_penarikan_tabungan,access_wizard_penarikan_tabungan,model_wizard_penarikan_tabungan,,1,1,1,0
+access_ksp_tabungan_line_type,access_ksp_tabungan_line_type,model_ksp_tabungan_line_type,,1,1,1,0
+access_ksp_config_tabungan,access_ksp_config_tabungan,model_ksp_config_tabungan,,1,1,1,0
+access_ksp_config_tabungan_fee_per_month,access_ksp_config_tabungan_fee_per_month,model_ksp_config_tabungan_fee_per_month,,1,1,1,0
+access_ksp_config_tabungan_fee_per_withdrawal,access_ksp_config_tabungan_fee_per_withdrawal,model_ksp_config_tabungan_fee_per_withdrawal,,1,1,1,0

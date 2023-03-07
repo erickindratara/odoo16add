@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+       <record id="wizard_setoran_tabungan_form_view" model="ir.ui.view">
+           <field name="name">wizard.setoran.tabungan.form.view</field>
+           <field name="model">wizard.setoran.tabungan</field>
+           <field name="arch" type="xml">
+               <form string="Setoran">
+                   <sheet>
+                       <group>
+                           <field name="partner_id"/>
+                           <field name="tabungan_id"/>
+                           <field name="amount"/>
+                       </group>
+                   </sheet>
+                   <footer>
+                        <button name="execute_setoran" string="Konfirmasi" type="object"/>
+                        <button string="Batal" class="btn-secondary" special="cancel"/>
+                    </footer>
+               </form>
+           </field>
+       </record>
+        <record id="wizard_setoran_tabungan_action_view" model="ir.actions.act_window">
+            <field name="name">Setoran Tabungan</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">wizard.setoran.tabungan</field>
+            <field name="view_mode">form</field>
+            <field name="target">new</field>
+        </record>
+        <menuitem id="setoran_tabungan_menu" name="Setoran" parent="akun_tabungan_categ" action="wizard_setoran_tabungan_action_view" sequence="20"/>
+    </data>
+</odoo>

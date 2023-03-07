@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+       <record id="ksp_pendanaan_form_view" model="ir.ui.view">
+           <field name="name">ksp.pendanaan.form.view</field>
+           <field name="model">ksp.pendanaan</field>
+           <field name="arch" type="xml">
+               <form string="Pendanaan">
+                   <header>
+                       <button name="action_confirm" string="Confirm" class="oe_highlight" states="draft" type="object"/>
+                       <button name="action_approved" string="Approve" class="oe_highlight" type="object" attrs="{'invisible':['|',('state', '!=', 'confirm'),('survey_state','!=','approved')]}"/>
+                       <button name="action_rejected" string="Reject" class="oe_highlight" type="object" attrs="{'invisible':['|',('state', '!=', 'confirm'),('survey_state','!=','approved')]}"/>
+                       <button name="action_done" string="Set Done" class="oe_highlight" states="approved" type="object"/>
+                       <field name="survey_state" invisible="1"/>
+                       <field name="state" widget="statusbar" statusbar_visible="draft,confirm,approved,done"/>
+                   </header>
+                   <sheet>
+                       <div class="oe_title">
+                           <div class="oe_edit_only">
+                               <label for="name"/>
+                           </div>
+                           <h1>
+                               <field name="name"/>
+                           </h1>
+                           <group attrs="{'invisible':[('state','=','draft')]}">
+                               <field name="survey_state"/>
+                           </group>
+                       </div>
+                       <group>
+                           <group>
+                               <field name="partner_id"/>
+                               <field name="amount"/>
+                           </group>
+                           <group>
+                               <field name="tenor"/>
+                               <field name="cicilan_amount"/>
+                               <field name="bunga"/>
+                           </group>
+                       </group>
+                       <notebook>
+                           <page string="Cicilan" attrs="{'invisible':[('cicilan_ids','=',[])]}">
+                               <field name="cicilan_ids">
+                                   <tree>
+                                       <field name="cicilan_index"/>
+                                       <field name="due_date"/>
+                                       <field name="amount"/>
+                                       <field name="state"/>
+                                       <button name="action_close" type="object" string="Bayar" attrs="{'invisible':[('state','!=','open')]}"/>
+                                   </tree>
+                               </field>
+                           </page>
+                       </notebook>
+                   </sheet>
+                   <div class="oe_chatter">
+                        <field name="message_follower_ids"/>
+                        <field name="message_ids"/>
+                    </div>
+               </form>
+           </field>
+       </record>
+        <record id="ksp_pendanaan_tree_view" model="ir.ui.view">
+            <field name="name">ksp.pendanaan.tree.view</field>
+            <field name="model">ksp.pendanaan</field>
+            <field name="arch" type="xml">
+                <tree string="Pendanaan">
+                    <field name="name"/>
+                    <field name="partner_id"/>
+                    <field name="amount"/>
+                    <field name="state"/>
+                </tree>
+            </field>
+        </record>
+        <record id="ksp_pendanaan_search_view" model="ir.ui.view">
+            <field name="name">ksp.pendanaan.search.view</field>
+            <field name="model">ksp.pendanaan</field>
+            <field name="arch" type="xml">
+                <search string="Pendanaan">
+                    <field name="partner_id" string="Nasabah"/>
+                    <field name="state" string="Status Pendanaan"/>
+                    <field name="survey_state" string="Status Survey"/>
+                    <group expand="0" string="Group By">
+                        <filter name="group_to_be_approved" string="To be approved" domain="[('state','=','confirm'),('survey_state','=','approved')]" context="{}"/>
+                    </group>
+                </search>
+            </field>
+        </record>
+        <record id="ksp_pendanaan_action_view" model="ir.actions.act_window">
+            <field name="name">Pendanaan</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">ksp.pendanaan</field>
+            <field name="view_mode">tree,form</field>
+            <field name="context">{'search_default_group_to_be_approved': 1}</field>
+            <field name="help" type="html">
+              <p class="oe_view_nocontent_create">
+                Tidak ada pendanaan
+              </p><p>
+                Klik create untuk menambahkan
+              </p>
+            </field>
+        </record>
+        <menuitem id="pendanaan_root_menu" name="Pendanaan" sequence="40"/>
+        <menuitem id="pendanaan_menu" name="Pendanaan" parent="pendanaan_root_menu" action="ksp_pendanaan_action_view"
+                  sequence="10"/>
+    </data>
+</odoo>

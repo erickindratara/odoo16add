@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+       <record id="ksp_saham_value_tree_view" model="ir.ui.view">
+           <field name="name">ksp.saham.value.tree.view</field>
+           <field name="model">ksp.saham.value</field>
+           <field name="arch" type="xml">
+               <tree string="Saham Value" create="false">
+                   <field name="saham_id"/>
+                   <field name="date_value"/>
+                   <field name="value"/>
+               </tree>
+           </field>
+       </record>
+        <record id="ksp_saham_value_action_view" model="ir.actions.act_window">
+            <field name="name">Saham Value</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">ksp.saham.value</field>
+            <field name="view_mode">tree</field>
+            <field name="help" type="html">
+              <p class="oe_view_nocontent_create">
+                Tidak ada saham value
+              </p><p>
+                Klik create untuk menambahkan
+              </p>
+            </field>
+        </record>
+        <record id="ksp_saham_search_view" model="ir.ui.view">
+            <field name="name">ksp.saham.search.view</field>
+            <field name="model">ksp.saham</field>
+            <field name="arch" type="xml">
+                <search string="Saham">
+                    <field name="partner_id" string="Nasabah"/>
+                    <group expand="0" string="Group By">
+                        <filter name="group_partner" string="Owner" domain="[]" context="{'group_by':'partner_id'}"/>
+                    </group>
+                </search>
+            </field>
+        </record>
+        <record id="ksp_saham_tree_view" model="ir.ui.view">
+            <field name="name">ksp.saham.tree.view</field>
+            <field name="model">ksp.saham</field>
+            <field name="arch" type="xml">
+                <tree string="Saham" create="false">
+                    <field name="name"/>
+                    <field name="origin_value"/>
+                    <field name="current_value"/>
+                    <field name="tanggal_pembelian_dihitung"/>
+                    <field name="partner_id"/>
+                    <field name="state"/>
+                </tree>
+            </field>
+        </record>
+        <record id="ksp_saham_action_view" model="ir.actions.act_window">
+            <field name="name">Saham</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">ksp.saham</field>
+            <field name="search_view_id" ref="ksp_saham_search_view"/>
+            <field name="context">{'search_default_group_partner': 1}</field>
+            <field name="view_mode">tree</field>
+            <field name="help" type="html">
+              <p class="oe_view_nocontent_create">
+                Tidak ada saham
+              </p><p>
+                Klik create untuk menambahkan
+              </p>
+            </field>
+        </record>
+        <menuitem id="saham_categ_menu" name="Saham" parent="ksp_perusahaan_root" sequence="20"/>
+        <menuitem id="saham_menu" name="Saham" parent="saham_categ_menu" action="ksp_saham_action_view" sequence="10"/>
+        <menuitem id="saham_value_menu" name="Saham Value" parent="saham_categ_menu"
+                  action="ksp_saham_value_action_view" sequence="20"/>
+    </data>
+</odoo>

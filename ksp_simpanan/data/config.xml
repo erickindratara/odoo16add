@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record id="default_config_simpanan" model="ksp.config.simpanan">
+            <field name="name">Konfigurasi Simpanan</field>
+        </record>
+    </data>
+</odoo>
