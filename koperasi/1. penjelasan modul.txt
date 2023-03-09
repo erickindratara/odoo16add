@@ -1,0 +1,140 @@
+tampilan Nama apk bisa dirubah dari menu setting, dengan cara menuliskan namanya di sana
+
+Setting jenis tabungan:
+1. simpanan pokok (setara akun modal)
+	Prefik: SP/000000001
+	setoran anggota baru: Rp. ............
+	
+	kode sp1 jurnal setoran: kas
+						simpanan pokok
+
+	kode sp2 jurnal penarikan: simpanan pokok
+							kas
+
+	kode sp3 jurnal koreksi kelebihan: simpanan pokok
+								kas
+
+	kode sp4 jurnal koreksi kekurangan: kas
+								simpanan pokok
+
+	kode sp5 jurnal alokasi laba ditahan: laba (rugi) periode tahun lalu
+									simpanan pokok
+
+2. simpanan wajib (setara akun modal)
+	Prefik: SW/0000000001
+	setoran wajib perbulan: Rp. ...........
+	kode sw1 jurnal setoran: kas
+						simpanan wajib
+
+	kode sw2 jurnal penarikan: simpanan wajib
+							kas
+
+	kode sw3 jurnal koreksi kelebihan: simpanan wajib
+								kas
+
+	kode sw4 jurnal koreksi kekurangan: kas
+								simpanan wajib
+
+	kode sw5 jurnal alokasi laba ditahan: laba (rugi) periode tahun lalu
+									simpanan wajib
+
+	cetak buku tabungan bagian depan
+
+
+3. simpanan sukarela (setara akun hutang)
+	Prefik: SS/0000000000001
+	Minimal saldo: Rp. .............
+	Minimal setoran: Rp. .............
+	account: .............(akun hutang)
+	Biaya penarikan contoh: 	0 sd Rp 999.999 = Rp. 1.000
+						1.000.000 sd Rp. 10.000.000 = Rp. 2.000
+						dst
+	perhitungan bunga? konven atau syariah
+	jika konven,
+	bunga? ....% perhitungan bunga menggunakan rumus saldo rata-rata harian
+
+	Saldo Rata-rata Basis (Agustus 2018)
+	Saldo Rekening Adi:
+	- Tgl 1-4 = Rp1.000.000
+	- Tgl 5-10 = Rp300.000
+	- Tgl 11 = Rp900.000
+	- Tgl 12-19 = Rp3.000.000
+	- Tgl 20-23 = Rp500.000
+	- Tgl 24-31 = Rp2.500.000
+	Saldo Rata-rata :
+	(4xRp1.000.000)+(6xRp300.000)+(1xRp900.000)+
+	(8xRp3.000.000)+(4xRp500.000)+(8xRp2.500.000)/21= Rp1.700.000
+
+	jika pilih syariah
+	margin : .........% dari keuntungan bersih usaha perbulan
+	
+	*penjelasan bunga konven dan syariah terlampir
+
+	kode ss1 jurnal setoran: kas
+						simpanan sukarela
+
+	kode ss2 jurnal penarikan: simpanan sukarela
+							kas
+
+	kode ss3 jurnal koreksi kelebihan: simpanan sukarela
+								kas
+
+	kode ss4 jurnal koreksi kekurangan: kas
+								simpanan sukarela
+
+	kode ss5 jurnal biaya penarikan: simpanan sukarela
+									pendapatan biaya penarikan
+
+	kode ss6 jurnal beban bunga bulanan/bagi hasil bulanan: beban bunga/bagi hasil bulanan simpanan sukarela
+												simpanan sukarela
+
+	kode ss7 jurnal penerimaan shu koperasi: laba periode tahun lalu
+									simpanan sukarela
+
+	kode ss8 jurnal penerimaan shu saham: laba periode tahun lalu
+									simpanan sukarela 
+	
+4. deposito (setara akun hutang)
+	prefik:D/00000000000001
+	minimal saldo : Rp. ................
+	lama deposito: .... bulan
+
+	penerapan bungan sama dengan simpanan sukarela hanya saja persentasenya lebih besar
+
+	kode d1 jurnal setoran: kas
+						deposito
+
+	kode d2 jurnal penarikan: deposito
+							kas
+
+	kode d3 jurnal koreksi kelebihan: deposito
+								kas
+
+	kode d4 jurnal koreksi kekurangan: kas
+								deposito
+
+	kode d5 jurnal biaya penarikan: deposito
+								pendapatan biaya penarikan
+
+	kode d6 jurnal beban bunga bulanan/bagi hasil bulanan: beban bunga/bagi hasil bulanan deposito
+												deposito
+
+
+5. saham
+	produk ini dijual, tidak dapat di beli lagi oleh koperasi, tetapi dapat dipindah tangankan KE ORANG LAIN dengan sepengetahuan koperasi dan dicatat
+
+	seri saham : A, harga perlembar Rp. ...... (misal 50.000) prefix: SA/0000000000000001 tahun keluar: .... status: 	dijual/tidak dijual lagi
+
+	seri saham : B, harga perlembar Rp. ...... (misal 75.000) prefix: SB/0000000000000001 tahun keluar: .... status: 	dijual/tidak dijual lagi
+
+	dst
+
+	jurnal jual saham: Kas
+					modal saham
+
+	jurnal laba ditahan: laba ditahan
+					modal saham
+
+	
+	
+

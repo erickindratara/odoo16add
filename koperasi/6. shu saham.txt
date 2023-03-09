@@ -1,0 +1,3 @@
+perhitunganya di excel
+shu ditransfer ke simpanan sukarela (ada menu khusus untuk mentransfernya)
+laba ditahan di bagi/dikembalikan ke akun saham, sehingga nilai saham akan mengalami kenaikan jika untung dan penurunan jika mengalami kerugian (ada menu khusus untuk mentransfernya)

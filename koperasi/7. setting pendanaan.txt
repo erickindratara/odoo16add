@@ -1,0 +1,34 @@
+pendanaan modal kerja dapat diaktifkan atau dinonaktifkan
+pendanaan digunakan untuk modal kerja? .........
+nilai modal yang dibutuhkan Rp.........
+dp 10% (editable) --> bukti customer mempunyai kemampuan bayar
+pencairan Rp.... (pengajuan-dp)
+jaminan: ........
+nilai jaminan, ....% dari pencairan
+margin    .......% per tahun
+angsuran digenapkan ke 1000
+persyaratan administarasi: ktp pemohon dan penjamin dengan keteranga hubunganya, jaminan, pas foto 3x4 2biji
+dapat mencetak bukti pencairan
+
+kode jurnal pencairan mk1: pembiayaan modal kerja
+						kas
+
+kode jurnal setoran angsuran mk2:  kas
+							pembiayaan modal kerja
+							pendapatan modal kerja
+							pendapatan pembulatan pembayaran (kalo ada pembulatan)
+
+
+
+https://www.indopremier.com/ipotplan/pages/tutorial/tutorialCreditSimulator%20-%20BungaTetap.php#:~:text=Pehitungan%20bunga%20tetap%20(flat)%20adalah,awal%20pada%20setiap%20periode%20pembayaran.
+
+
+pendanaan kredit barang dapat diaktifkan atau dinonaktifkan
+pendanaan digunakan untuk beli .........
+nilai barang yang dibutuhkan Rp.........
+dp 10% (editable) --> bukti customer mempunyai kemampuan bayar
+pencairan Rp.... (pengajuan-dp)
+jaminan: ........
+nilai jaminan, ....% dari pencairan
+margin    .......% per tahun
+

@@ -1,0 +1,7 @@
+teller
+tempat melakukan setoran dan penarikan tabungan, 
+pembelian saham dan 
+pencairan pembiayaan dan cililan kredit
+di sini dapat ngeprint setoran, penarikan dan lainya seperti di buku tabungan bank menggunakan printer dot matrik
+
+dapat ngeprint bukti setoran dan penarikan

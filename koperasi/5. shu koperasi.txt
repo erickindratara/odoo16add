@@ -1,0 +1,6 @@
+pada bagian setting ada pilihan yang berhak mendapat shu:
+pemilik simpanan pokok atau pemilik simpanan wajib, atau
+kedua2nya
+perhitunganya di excel
+shu ditransfer ke simpanan sukarela (ada menu khusus untuk mentransfernya)
+laba ditahan di bagi/dikembalikan ke akun simpanan pokok dan atau simp wajib (ada menu khusus untuk mentransfernya)

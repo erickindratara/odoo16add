@@ -1,0 +1,27 @@
+contoh:bulan juni
+Tgl	Setor		Tarik			Saldo
+1	1.000.000	 			1.000.000
+5	5.000.000	 			6.000.000
+6	 		500.000		5.500.000
+10	2.500.000	 			8.000.000
+20	 		1.000.000		7.000.000
+25	10.000.000	 			17.000.000
+30	 		2.000.000		15.000.000
+
+
+
+Perhitungan bunga saldo rata-rata harian
+[ (Rp.1 juta x 4 hari) + (Rp.6 juta x 1 hari) + (Rp.5,5 juta x 4 hari ) + (Rp.8 juta x 10 hari) + (Rp.7 juta x 5 hari) + (Rp.17 juta x 5 hari) + (Rp.15 juta x 1 hari) ] / 30 = Rp.8.233.333,00
+
+Bunga misalkan 5% (editable)
+Rumus bunga konvensional:
+
+Bunga = SRH x i x t/ 365
+SRH = Saldo rata-rata harian, i = suku bunga tabungan pertahun, t = jumlah hari dalam bulan berjalan.
+
+Bunga = Rp.8.233.333,00 x 5% x 3/ 365
+
+Bunga = Rp. 33.835,62
+
+bunga ditransfer setiap akhir bulan pukul 23.59
+cetak buku tabungan bagian depan
