@@ -8,8 +8,8 @@
                <form string="Setoran">
                    <sheet>
                        <group>
-                           <field name="partner_id"/>
-                           <field name="tabungan_id"/>
+                           <field name="partner_id" domain="[('is_nasabah', '=', True)]" widget="selection" />
+                           <field name="tabungan_id"  widget="selection" />
                            <field name="amount"/>
                        </group>
                    </sheet>

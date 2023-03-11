@@ -1,5 +1,7 @@
 from odoo import api, fields, models
-
+from datetime import date, timedelta
+import calendar
+from odoo.exceptions import UserError, ValidationError   
 
 class Tabungan(models.Model):
     _name = 'ksp.tabungan'
@@ -7,6 +9,13 @@ class Tabungan(models.Model):
     _description = 'Tabungan'
     _order = 'id desc'
 
+    def name_get(self):
+        result = []
+        for s in self: 
+            saldo = str(int(s.saldo))
+            name = s.name + ' [saldo Rp. ' +saldo +']'
+            result.append((s.id, name))
+        return result 
     name = fields.Char(readonly=True, default='/', string="No Rekening")
     partner_id = fields.Many2one(comodel_name="res.partner", string="Customer", required=False, )
     line_ids = fields.One2many(comodel_name="ksp.tabungan.line", inverse_name="tabungan_id", string="Line",
@@ -27,10 +36,24 @@ class Tabungan(models.Model):
         config_tabungan = self.env.ref('ksp_tabungan.default_config_tabungan')
         adm_type = self.env['ksp.tabungan.line.type'].search([('code', '=', 'ADM2')])
         for me in self:
-            fee_monthly = config_tabungan.fee_per_month_ids.filtered(lambda x: x.minimum_amount <= me.saldo)
+            fee_monthly = config_tabungan.fee_per_month_ids.filtered(lambda x: x.minimum_amount <= me.saldo) 
             if not fee_monthly:
                 continue
-            fee_monthly = fee_monthly.sorted(lambda x: x.minimum_amount, reverse=True)[0]
+            awalbulan = date.today().replace(day=1) 
+            res = calendar.monthrange(date.today().year, date.today().month)
+            day = res[1] 
+            akhirbulan =date(awalbulan.year,awalbulan.month,day)  
+                                                                      
+            transaksibulanini = self.env['ksp.tabungan.line'].search([('tabungan_id', '=', me.id),
+                                                                      ('type_id.code', '=', 'ADM2'),
+                                                                      ('transaction_date', '>=', awalbulan),
+                                                                      ('transaction_date', '<=', akhirbulan)]) 
+            if (transaksibulanini.id not in (None, False)):
+                msg = 'bulan ini ['+str(date.today())+'] sudah ada biaya admin bulanan. tidak bisa minta biaya admin lagi. tunggu bulan depan'
+                raise ValidationError(msg) 
+                continue 
+
+            fee_monthly = fee_monthly.sorted(lambda x: x.minimum_amount, reverse=True)[0] 
             me.update({
                 'saldo': me.saldo - fee_monthly.admin_fee_amount,
                 'line_ids': [(0, 0, {

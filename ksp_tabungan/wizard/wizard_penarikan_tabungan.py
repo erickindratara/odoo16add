@@ -1,4 +1,5 @@
 from odoo import api, fields, models
+from odoo.exceptions import UserError, ValidationError
 
 
 class WizardPanrikanTabungan(models.TransientModel):
@@ -15,8 +16,18 @@ class WizardPanrikanTabungan(models.TransientModel):
     def onchange_partner_id(self):
         for rec in self:
             return {'domain': {'tabungan_id': [('partner_id', '=', rec.partner_id.id)]}}
+        
 
+    def validasi_konfirmasi(self): 
+        calon_saldo = self.tabungan_id.saldo + self.amount
+        if(calon_saldo <0)                      : raise ValidationError('saldo akhir tidak boleh minus.') 
+        if(self.amount in (None, False, 0))     : raise ValidationError('amount harus diisi') 
+        if(self.amount < 0)                     : raise ValidationError('tidak bisa minus')  
+        if(self.tabungan_id in (None, False))   : raise ValidationError('Rekening Harus Diisi')
+
+           
     def execute_penarikan(self):
+        self.validasi_konfirmasi()
         line_type = self.env['ksp.tabungan.line.type'].search([('code', '=', 'TRKN')])
         self.tabungan_id.update({
             'saldo': self.tabungan_id.saldo - self.amount,

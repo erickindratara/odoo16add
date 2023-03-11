@@ -19,6 +19,25 @@ Setting jenis tabungan:
 
 	kode sp5 jurnal alokasi laba ditahan: laba (rugi) periode tahun lalu
 									simpanan pokok
+	erick:
+	simpanan pokok 
+	-itu 1 x seumur hidup
+	-bisa disetting besarannya (ada master)
+	tabungan-rekening:Terapkan Biaya Bulanan - invisible jika customer belum dipilih. (mengurangi data sampah)
+	tabungan-rekening:Kunci nama nasabah, jika nomor rekening sudah tersimpan. masa bisa ganti nasabah? bahaya dong
+	tabungan-rekening:kunci terapkan biaya bulanan, jika sudah di charge bulan ini. masa bisa di charge lagi? rugi dong
+
+	tabungan-setoran: cegah di save, tidak bisa save jika tidak punya rekening
+	tabungan-setoran: amount gak boleh 0 dan kurang dari 0. 
+	tabungan-setoran: nasabah tidak boleh input dari sini
+	tabungan-setoran: pilihan rekening dikunci, sehingga tidak bisa create rekening dari situ. (sebelumnya bisa)
+	tabungan-penarikan: cegah di save, tidak bisa save jika tidak punya rekening
+	tabungan-penarikan: amount gak boleh 0 dan kurang dari 0.
+	tabungan-penarikan: nasabah tidak boleh input dari sini
+	tabungan-penarikan: pilihan rekening dikunci, sehingga tidak bisa create rekening dari situ. (sebelumnya bisa)
+	
+	nasabah: tambah flag is_nasabah. sehingga administrator dll hidden	
+
 
 2. simpanan wajib (setara akun modal)
 	Prefik: SW/0000000001
@@ -39,6 +58,7 @@ Setting jenis tabungan:
 									simpanan wajib
 
 	cetak buku tabungan bagian depan
+	erik:
 
 
 3. simpanan sukarela (setara akun hutang)

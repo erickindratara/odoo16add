@@ -7,11 +7,11 @@
             <field name="arch" type="xml">
                <form string="Rekening">
                    <header>
-                       <button name="apply_fee_monthly" string="Terapkan Biaya Bulanan" class="oe_highlight" type="object"/>
+                       <button name="apply_fee_monthly" attrs="{'invisible': [('partner_id', 'in', (False, None))]}"  string="Terapkan Biaya Bulanan" class="oe_highlight" type="object"/>
                    </header>
                    <sheet>
                        <div class="oe_title">
-                            <h1><field name="partner_id"/></h1>
+                            <h1><field name="partner_id" attrs="{'readonly': [('id', 'not in', (False, None))]}"/></h1>
                         </div>
                        <group>
                            <field name="name"/>
@@ -21,6 +21,7 @@
                            <page string="Tabungan Detail">
                                <field name="line_ids" string="Transaction Line" mode="tree" readonly="1">
                                     <tree>
+                                        <field name="id"/>
                                         <field name="tabungan_id" invisible="1"/>
                                         <field name="name" invisible="1"/>
                                         <field name="transaction_date"/>
