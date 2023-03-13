@@ -8,4 +8,4 @@ class SahamValue(models.Model):
 
     date_value = fields.Datetime(default=fields.Date.today)
     value = fields.Float()
-    saham_id = fields.Many2one(comodel_name="kspsaham", string="", required=False, )
+    saham_id = fields.Many2one(comodel_name="ksp.saham", string="", required=False, )
