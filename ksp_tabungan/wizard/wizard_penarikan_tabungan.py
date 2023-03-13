@@ -17,14 +17,18 @@ class WizardPanrikanTabungan(models.TransientModel):
         for rec in self:
             return {'domain': {'tabungan_id': [('partner_id', '=', rec.partner_id.id)]}}
         
-
+ 
     def validasi_konfirmasi(self): 
-        calon_saldo = self.tabungan_id.saldo + self.amount
-        if(calon_saldo <0)                      : raise ValidationError('saldo akhir tidak boleh minus.') 
-        if(self.amount in (None, False, 0))     : raise ValidationError('amount harus diisi') 
-        if(self.amount < 0)                     : raise ValidationError('tidak bisa minus')  
-        if(self.tabungan_id in (None, False))   : raise ValidationError('Rekening Harus Diisi')
-
+        calon_saldo = self.tabungan_id.saldo - self.amount 
+        if calon_saldo < 0:
+            raise ValidationError('Penarikan melebihi saldo yang ada di rekening.')
+        if self.amount in (None, False, 0):
+            raise ValidationError('Amount harus diisi.') 
+        if self.amount < 0:
+            raise ValidationError('Amount tidak bisa negatif.')  
+        if not self.tabungan_id:
+            raise ValidationError('Rekening harus diisi.')
+    
            
     def execute_penarikan(self):
         self.validasi_konfirmasi()

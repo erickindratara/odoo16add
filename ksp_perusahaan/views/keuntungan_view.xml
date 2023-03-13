@@ -30,7 +30,8 @@
                        <notebook>
                            <page string="Dividen Saham">
                                <field name="dividen_saham_ids">
-                                   <tree>
+                                   <tree create="false">
+                                       <field name="row_number"/>
                                        <field name="tabungan_id"/>
                                        <field name="partner_tabungan_id"/>
                                        <field name="umur_saham"/>

@@ -33,6 +33,14 @@ class BuySaham(models.Model):
         })
         return
 
+    def web_progress_iter(self, iterable, msg="", step=10):
+        total = len(iterable)
+        for i, item in enumerate(iterable):
+            if i % step == 0:
+                self.env.cr.commit()
+            yield item
+        self.env.cr.commit()
+        
     def action_confirm(self):
         if self.state != 'draft':
             raise UserError(_("Only draft can set to confirm"))

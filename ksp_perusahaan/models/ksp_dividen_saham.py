@@ -7,6 +7,12 @@ class DividenTabungan(models.Model):
     _description = 'Dividen Tabungan'
     _order = 'id desc'
 
+    @api.depends('keuntungan_id.dividen_saham_ids') 
+    def _compute_row_number(self):
+        for i, line in enumerate(sorted(self.keuntungan_id.dividen_saham_ids, key=lambda r: r.id), start=1):
+            line.row_number = i
+
+    row_number = fields.Integer(string='No.', compute='_compute_row_number', store=True)
     name = fields.Char(readonly=True)
     keuntungan_id = fields.Many2one(comodel_name="ksp.keuntungan", string="Keuntungan", required=True, readonly=True)
     tabungan_id = fields.Many2one(comodel_name="ksp.tabungan", string="Rekening Tabungan", required=True, readonly=True)

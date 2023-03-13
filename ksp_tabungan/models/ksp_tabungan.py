@@ -38,18 +38,25 @@ class Tabungan(models.Model):
         for me in self:
             fee_monthly = config_tabungan.fee_per_month_ids.filtered(lambda x: x.minimum_amount <= me.saldo) 
             if not fee_monthly:
+                msg = 'No applicable monthly fees found for this account. Cannot apply monthly fee.'
+                raise ValidationError(msg) 
                 continue
-            awalbulan = date.today().replace(day=1) 
-            res = calendar.monthrange(date.today().year, date.today().month)
+            
+            today = date.today()
+            awalbulan = today.replace(day=1) 
+            res = calendar.monthrange(today.year, today.month)    
             day = res[1] 
-            akhirbulan =date(awalbulan.year,awalbulan.month,day)  
-                                                                      
-            transaksibulanini = self.env['ksp.tabungan.line'].search([('tabungan_id', '=', me.id),
-                                                                      ('type_id.code', '=', 'ADM2'),
-                                                                      ('transaction_date', '>=', awalbulan),
-                                                                      ('transaction_date', '<=', akhirbulan)]) 
-            if (transaksibulanini.id not in (None, False)):
-                msg = 'bulan ini ['+str(date.today())+'] sudah ada biaya admin bulanan. tidak bisa minta biaya admin lagi. tunggu bulan depan'
+            akhirbulan = date(awalbulan.year,awalbulan.month,day)  
+                                                                    
+            count = self.env['ksp.tabungan.line'].search_count([
+                ('tabungan_id', '=', me.id),
+                ('type_id.code', '=', 'ADM2'),
+                ('transaction_date', '>=', awalbulan),
+                ('transaction_date', '<=', akhirbulan)
+            ])
+            
+            if count > 0:
+                msg = f"bulan ini [{today}] sudah ada biaya admin bulanan sebanyak[{count}x] tidak bisa minta biaya admin lagi. tunggu bulan depan"
                 raise ValidationError(msg) 
                 continue 
 

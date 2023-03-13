@@ -1,3 +1,5 @@
+A:\GIT-PROJECT\o14kop\server\python odoo-bin -c odoo.conf
+%windir%\system32\cmd.exe /k "cd /d a:\git-project\o14kop\server\ && python odoo-bin -c odoo.conf"
 tampilan Nama apk bisa dirubah dari menu setting, dengan cara menuliskan namanya di sana
 
 Setting jenis tabungan:
@@ -35,7 +37,7 @@ Setting jenis tabungan:
 	tabungan-penarikan: amount gak boleh 0 dan kurang dari 0.
 	tabungan-penarikan: nasabah tidak boleh input dari sini
 	tabungan-penarikan: pilihan rekening dikunci, sehingga tidak bisa create rekening dari situ. (sebelumnya bisa)
-	
+
 	nasabah: tambah flag is_nasabah. sehingga administrator dll hidden	
 
 
